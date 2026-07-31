@@ -1,11 +1,11 @@
-import Model.UserModel;
+import model.UserModel;
 import io.restassured.RestAssured;
 import org.junit.After;
 import org.junit.Before;
 
-import static Data.UserData.*;
-import static Data.UserData.USER_NAME;
-import static Steps.UserSteps.userDelete;
+import static data.UserData.*;
+import static data.UserData.USER_NAME;
+import static steps.UserSteps.userDelete;
 
 public class BaseApiTest {
     UserModel user;

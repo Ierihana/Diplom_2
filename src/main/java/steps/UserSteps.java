@@ -1,11 +1,11 @@
-package Steps;
+package steps;
 
-import Model.UserLoginModel;
-import Model.UserModel;
+import model.UserLoginModel;
+import model.UserModel;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import static Data.UserData.*;
+import static data.UserData.*;
 import static io.restassured.RestAssured.*;
 
 public class UserSteps {
@@ -22,7 +22,7 @@ public class UserSteps {
                 .extract().response();
 
     }
-    @Step
+    @Step("Авторизация пользователя.")
     public static Response userLogin(UserModel user){
         String userEmail = user.getEmail();
         String userPassword = user.getPassword();
@@ -37,7 +37,7 @@ public class UserSteps {
                 .extract().response();
     }
 
-    @Step
+    @Step("Удаление учетной записи пользователя.")
     public static void userDelete(UserModel user){
         String fullAccessToken = userLogin(user).path("accessToken").toString();
         String accessToken = fullAccessToken.substring(7);
@@ -48,5 +48,4 @@ public class UserSteps {
                 .then()
                 .extract().response();
     }
-
 }

@@ -1,17 +1,17 @@
-package Steps;
+package steps;
 
-import Model.OrderModel;
-import Model.UserModel;
+import model.OrderModel;
+import model.UserModel;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import static Data.OrderData.CREATE_ORDER;
-import static Steps.UserSteps.userLogin;
+import static data.OrderData.CREATE_ORDER;
+import static steps.UserSteps.userLogin;
 import static io.restassured.RestAssured.given;
 
 public class OrderSteps {
 
-    @Step
+    @Step("Создание заказ с авторизацией.")
     public static Response createOrderWithAuthorization(UserModel user, OrderModel order){
         String fullAccessToken = userLogin(user).path("accessToken").toString();
         String accessToken = fullAccessToken.substring(7);
@@ -26,7 +26,7 @@ public class OrderSteps {
                 .extract().response();
     }
 
-    @Step
+    @Step("Создание заказа без авторизации.")
     public static Response createOrderWithoutAuthorization(OrderModel order){
         return given()
                 .header("content-type", "application/json")
@@ -38,7 +38,7 @@ public class OrderSteps {
                 .extract().response();
     }
 
-    @Step
+    @Step("Создание заказа без ингредиентов в теле запроса.")
     public static Response createOrderWithoutAuthorization() {
         return given()
                 .body("{\"ingredients\": []}")

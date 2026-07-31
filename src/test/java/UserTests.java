@@ -1,10 +1,9 @@
-import Model.UserModel;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 
 import static java.net.HttpURLConnection.*;
-import static Steps.UserSteps.userCreating;
+import static steps.UserSteps.userCreating;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 public class UserTests extends BaseApiTest{
